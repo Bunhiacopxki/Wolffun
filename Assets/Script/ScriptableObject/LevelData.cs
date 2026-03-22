@@ -15,6 +15,7 @@ public class LevelData : ScriptableObject
 [System.Serializable]
 public class PixelObjectSpawnEntry
 {
+    public string objectId = "Object";
     public PixelShapeData shape;
     public MaterialData materialData;
     public Vector2 spawnPosition;
