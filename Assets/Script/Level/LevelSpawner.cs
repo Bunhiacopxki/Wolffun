@@ -22,7 +22,7 @@ public class LevelSpawner : MonoBehaviour
     public void StartSpawning()
     {
         if (_remainObject == 0) return;
-        if (_spawnCoroutine != null) StopAllCoroutines();
+        if (_spawnCoroutine != null) StopCoroutine(_spawnCoroutine);
         _spawnCoroutine = StartCoroutine(SpawnRoutine());
     }
 

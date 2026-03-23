@@ -12,7 +12,7 @@ public class PixelObjectRoot : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
-    private BoxCollider2D boxCollider;
+    private PolygonCollider2D polygonCollider;
     private PixelVisualBuilder visualBuilder;
     private PixelColliderBuilder colliderBuilder;
     private PixelDamageSystem damageSystem;
@@ -27,7 +27,7 @@ public class PixelObjectRoot : MonoBehaviour
 
     public Rigidbody2D Rigidbody => rb;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
-    public BoxCollider2D BoxCollider => boxCollider;
+    public PolygonCollider2D PolygonCollider => polygonCollider;
     public PixelDamageSystem DamageSystem => damageSystem;
     public PixelSplitSystem SplitSystem => splitSystem;
 
@@ -37,7 +37,7 @@ public class PixelObjectRoot : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
         visualBuilder = GetComponent<PixelVisualBuilder>();
         colliderBuilder = GetComponent<PixelColliderBuilder>();
         damageSystem = GetComponent<PixelDamageSystem>();
@@ -154,7 +154,7 @@ public class PixelObjectRoot : MonoBehaviour
     public void Rebuild()
     {
         visualBuilder.Rebuild(this, spriteRenderer);
-        colliderBuilder.Rebuild(this, boxCollider);
+        colliderBuilder.Rebuild(this, polygonCollider);
 
         rb.mass = Mathf.Max(0.1f, GetAlivePixelCount() * (MaterialData != null ? MaterialData.density : 1f) * 0.01f);
     }

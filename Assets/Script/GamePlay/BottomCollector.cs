@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class BottomCollector : MonoBehaviour
 {
-    [SerializeField] private XPManager xpManager;
-
-    private void Reset()
+     private void Reset()
     {
         Collider2D col = GetComponent<Collider2D>();
         if (col != null)
@@ -19,8 +17,7 @@ public class BottomCollector : MonoBehaviour
         int alivePixels = root.GetAlivePixelCount();
         int xp = alivePixels * root.XpPerPixel;
 
-        if (xpManager != null)
-            xpManager.AddXP(xp);
+        GameManager.Instance.XpManager.AddXP(xp);
 
         root.ResolveAndDestroy();
     }

@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21eec080a8a4caf42ac43b2756180009, type: 3}
+  m_Name: Level_2
+  m_EditorClassIdentifier: 
+  levelId: 2
+  spawnInterval: 3
+  objectsToSpawn:
+  - objectId: 1
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  - objectId: 1
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+    materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
+    spawnPosition: {x: 0, y: 5}
+    scale: 1
+    destructible: 1
+    xpPerPixel: 1
+  obstacles: []
+  weaponSlots: []

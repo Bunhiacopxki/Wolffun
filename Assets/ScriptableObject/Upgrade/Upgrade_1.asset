@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc90caf06d6ba0e47a90d3c24d012d36, type: 3}
+  m_Name: Upgrade_1
+  m_EditorClassIdentifier: 
+  upgradeId: 1
+  displayName: Larger saw
+  description: Larger saw
+  type: 0
+  value: 1
+  icon: {fileID: 21300000, guid: 7bbd26cf906121c49a63401b9a7cd2ee, type: 3}
