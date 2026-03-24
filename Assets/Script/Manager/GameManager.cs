@@ -205,9 +205,19 @@ public class GameManager : MonoBehaviour
             ResumeGame();
             return;
         }
-
+        ResetAllSaws();
         CurrentLevelIndex = nextIndex;
         BeginCurrentLevel();
+    }
+
+    private void ResetAllSaws()
+    {
+        SawWeapon[] saws = FindObjectsOfType<SawWeapon>();
+        foreach (var saw in saws)
+        {
+            if (saw != null)
+                saw.ResetToBaseStats();
+        }
     }
 
     public void RestartCurrentLevel()

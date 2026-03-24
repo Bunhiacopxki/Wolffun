@@ -15,13 +15,19 @@ public class SawWeapon : MonoBehaviour
     [SerializeField] private CapsuleCollider2D _triggerCollider;
 
     private float _currentAngle;
-    private Vector2 _lastPosition;
-    private bool _hasLastPosition;
+    private float _baseHitRadius;
+    private float _baseDps;
+    private float _baseRotationSpeed;
+
+    private void Awake()
+    {
+        _baseHitRadius = _hitRadius;
+        _baseDps = _dps;
+        _baseRotationSpeed = _rotationSpeed;
+    }
 
     private void OnEnable()
     {
-        _lastPosition = transform.position;
-        _hasLastPosition = true;
         RefreshVisualAndCollider();
     }
 
@@ -32,12 +38,6 @@ public class SawWeapon : MonoBehaviour
 
         if (_visualRoot != null)
             _visualRoot.localRotation = Quaternion.Euler(0f, 0f, _currentAngle);
-    }
-
-    private void LateUpdate()
-    {
-        _lastPosition = transform.position;
-        _hasLastPosition = true;
     }
 
     public void AddLength(float value)
@@ -136,5 +136,14 @@ public class SawWeapon : MonoBehaviour
             center = _triggerCollider.bounds.center;
 
         Gizmos.DrawWireSphere(center, _hitRadius);
+    }
+
+    public void ResetToBaseStats()
+    {
+        _hitRadius = _baseHitRadius;
+        _dps = _baseDps;
+        _rotationSpeed = _baseRotationSpeed;
+
+        RefreshVisualAndCollider();
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using static PixelObjectRoot;
 
 public class PixelDamageSystem : MonoBehaviour
@@ -84,5 +84,73 @@ public class PixelDamageSystem : MonoBehaviour
             root.Rebuild();
             splitSystem?.CheckAndSplit();
         }
+    }
+
+    public void ApplyTapDamage(Vector2 centerPoint, float radius, float maxDamage, float minDamage)
+    {
+        if (root == null || !root.Destructible) return;
+
+        Color materialColor = root.MaterialData != null ? root.MaterialData.color : Color.white;
+        bool changed = false;
+
+        float pixelSize = 1f / GameManager.Instance.PixelsPerUnit;
+        float pixelReach = 0.5f * pixelSize * Mathf.Sqrt(2f);
+
+        for (int x = 0; x < root.Width; x++)
+        {
+            for (int y = 0; y < root.Height; y++)
+            {
+                if (!root.Cells[x, y].alive) continue;
+
+                Vector2 pixelWorld = root.PixelToWorldCenter(x, y);
+                float distance = Vector2.Distance(pixelWorld, centerPoint);
+
+                if (distance > radius + pixelReach) continue;
+
+                float damage = EvaluateTapFalloff(distance, radius, maxDamage, minDamage);
+
+                PixelCell cell = root.Cells[x, y];
+                cell.hp -= damage;
+
+                if (cell.hp <= 0f)
+                {
+                    root.KillPixel(x, y);
+
+                    GameManager.Instance.XpManager.AddXP(root.XpPerPixel);
+
+                    if (debrisFactory != null)
+                        debrisFactory.SpawnDebris(pixelWorld, materialColor);
+
+                    changed = true;
+                }
+                else
+                {
+                    root.Cells[x, y] = cell;
+                }
+
+                if (flashFactory != null)
+                {
+                    flashFactory.SpawnFlash(pixelWorld, Color.white);
+                }
+            }
+        }
+
+        if (changed)
+        {
+            if (root.GetAlivePixelCount() <= 0)
+            {
+                root.ResolveAndDestroy();
+                return;
+            }
+
+            root.Rebuild();
+            splitSystem?.CheckAndSplit();
+        }
+    }
+
+    private float EvaluateTapFalloff(float distance, float radius, float maxDamage, float minDamage)
+    {
+        float t = Mathf.Clamp01(distance / Mathf.Max(radius, 0.0001f));
+        return Mathf.Lerp(maxDamage, minDamage, t);
     }
 }
