@@ -28,13 +28,10 @@ public class PixelObjectSpawnEntry
 public class ObstacleData
 {
     public Vector2 position;
-    public Vector2 size = new Vector2(2f, 0.5f);
-    public float rotation;
 }
 
 [System.Serializable]
 public class WeaponSlotData
 {
     public Vector2 position;
-    public bool occupiedAtStart = true;
 }

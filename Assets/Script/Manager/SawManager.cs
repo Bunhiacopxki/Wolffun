@@ -6,15 +6,36 @@ public class SawManager : MonoBehaviour
 {
     [SerializeField] private SawWeapon _sawPrefab;
     [SerializeField] private List<SawWeapon> _activeSaws = new();
-    [SerializeField] private List<SawSlot> _allSlots = new();
+    private readonly List<SawSlot> _allSlots = new();
 
     public IReadOnlyList<SawSlot> AllSlots => _allSlots;
 
+    public void SetSlots(IEnumerable<SawSlot> slots)
+    {
+        _allSlots.Clear();
+
+        if (slots == null) return;
+
+        foreach (var slot in slots)
+        {
+            if (slot == null) continue;
+            _allSlots.Add(slot);
+        }
+    }
+
     public void ApplyToAllSaws(Action<SawWeapon> action)
     {
-        foreach (var saw in _activeSaws)
+        for (int i = _activeSaws.Count - 1; i >= 0; i--)
         {
-            if (saw == null) continue;
+            SawWeapon saw = _activeSaws[i];
+
+            if (saw == null)
+            {
+                _activeSaws.RemoveAt(i);
+                continue;
+            }
+
+            if (!saw.IsFromSlot) continue;
             action?.Invoke(saw);
         }
     }
@@ -24,8 +45,11 @@ public class SawManager : MonoBehaviour
         if (slot == null) return false;
         if (slot.IsOccupied) return false;
         if (_sawPrefab == null) return false;
+        if (!_allSlots.Contains(slot)) return false;
 
         SawWeapon newSaw = Instantiate(_sawPrefab, slot.transform.position, Quaternion.identity, transform);
+        newSaw.InitializeFromSlot(slot);
+
         _activeSaws.Add(newSaw);
         slot.AssignSaw(newSaw);
 
@@ -43,5 +67,30 @@ public class SawManager : MonoBehaviour
         }
 
         return result;
+    }
+
+    public void ResetAllSaws()
+    {
+        for (int i = _activeSaws.Count - 1; i >= 0; i--)
+        {
+            SawWeapon saw = _activeSaws[i];
+
+            if (saw == null)
+            {
+                _activeSaws.RemoveAt(i);
+                continue;
+            }
+
+            if (!saw.IsFromSlot) continue;
+
+            saw.ResetToBaseStats();
+
+            SawSlot slot = saw.OwnerSlot;
+            if (slot != null && slot.CurrentSaw == saw)
+                slot.ClearSaw();
+
+            Destroy(saw.gameObject);
+            _activeSaws.RemoveAt(i);
+        }
     }
 }

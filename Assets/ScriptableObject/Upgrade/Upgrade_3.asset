@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Upgrade_3
   m_EditorClassIdentifier: 
   upgradeId: 3
-  displayName: Higher damage
-  description: Higher damage
+  displayName: DAMAGE
+  description: Saw Damage Increase
   type: 2
   value: 1
   icon: {fileID: 21300000, guid: ca2f8dcb17d147d44ac3c9749726e1fb, type: 3}

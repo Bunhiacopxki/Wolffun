@@ -16,74 +16,76 @@ MonoBehaviour:
   spawnInterval: 5
   objectsToSpawn:
   - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 2
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 3
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 4
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 5
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 6
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 7
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 8
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 9
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  - objectId: 1
-    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
+  - objectId: 10
+    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
-  obstacles: []
-  weaponSlots: []
+  obstacles:
+  - position: {x: -0.5, y: -0.5}
+  weaponSlots:
+  - position: {x: 0, y: 0}

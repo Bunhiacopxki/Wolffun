@@ -19,6 +19,11 @@ public class SawWeapon : MonoBehaviour
     private float _baseDps;
     private float _baseRotationSpeed;
 
+    private SawSlot _ownerSlot;
+
+    public bool IsFromSlot => _ownerSlot != null;
+    public SawSlot OwnerSlot => _ownerSlot;
+
     private void Awake()
     {
         _baseHitRadius = _hitRadius;
@@ -40,6 +45,11 @@ public class SawWeapon : MonoBehaviour
             _visualRoot.localRotation = Quaternion.Euler(0f, 0f, _currentAngle);
     }
 
+    public void InitializeFromSlot(SawSlot slot)
+    {
+        _ownerSlot = slot;
+    }
+
     public void AddLength(float value)
     {
         _hitRadius += value * 0.1f;
@@ -49,12 +59,25 @@ public class SawWeapon : MonoBehaviour
 
     public void AddRotationSpeed(float value)
     {
-        _rotationSpeed += value;
+        _rotationSpeed += (value * 50);
     }
 
     public void AddDps(float value)
     {
-        _dps = Mathf.Max(0f, _dps + value);
+        _dps = Mathf.Max(0f, _dps + value * 30);
+    }
+
+    public void ResetToBaseStats()
+    {
+        _hitRadius = _baseHitRadius;
+        _dps = _baseDps;
+        _rotationSpeed = _baseRotationSpeed;
+        _currentAngle = 0f;
+
+        if (_visualRoot != null)
+            _visualRoot.localRotation = Quaternion.identity;
+
+        RefreshVisualAndCollider();
     }
 
     private void RefreshVisualAndCollider()
@@ -136,14 +159,5 @@ public class SawWeapon : MonoBehaviour
             center = _triggerCollider.bounds.center;
 
         Gizmos.DrawWireSphere(center, _hitRadius);
-    }
-
-    public void ResetToBaseStats()
-    {
-        _hitRadius = _baseHitRadius;
-        _dps = _baseDps;
-        _rotationSpeed = _baseRotationSpeed;
-
-        RefreshVisualAndCollider();
     }
 }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Upgrade_1
   m_EditorClassIdentifier: 
   upgradeId: 1
-  displayName: Larger saw
-  description: Larger saw
+  displayName: SIZE
+  description: Saw Size Increase
   type: 0
   value: 1
   icon: {fileID: 21300000, guid: 7bbd26cf906121c49a63401b9a7cd2ee, type: 3}

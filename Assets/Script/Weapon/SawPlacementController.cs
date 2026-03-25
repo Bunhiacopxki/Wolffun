@@ -48,20 +48,16 @@ public class SawPlacementController : MonoBehaviour
 
             bool success = _sawManager.TrySpawnSawAtSlot(slot);
             if (success)
-                EndChooseMode();
+            {
+                EndChooseMode(slot);
+            }
         }
     }
 
-    private void EndChooseMode()
+    private void EndChooseMode(SawSlot slot)
     {
         _isChoosingSlot = false;
-
-        foreach (var slot in _availableSlots)
-        {
-            if (slot == null) continue;
-            slot.SetHighlight(false);
-        }
-
+        slot.SetHighlight(false);
         _availableSlots.Clear();
         OnPlacementFinished?.Invoke();
     }

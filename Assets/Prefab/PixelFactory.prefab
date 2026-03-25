@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debrisPrefab: {fileID: 2480635913890101901, guid: 2569650e268c8d54398e1d08b4c24bbd, type: 3}
-  debrisScale: 0.15
+  debrisScale: 0.3
   launchSpeedMin: 1
   launchSpeedMax: 3
   angularSpeedMin: -180

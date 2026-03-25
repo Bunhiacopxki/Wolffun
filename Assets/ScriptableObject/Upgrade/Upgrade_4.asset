@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Upgrade_4
   m_EditorClassIdentifier: 
   upgradeId: 4
-  displayName: Add one new saw
-  description: Add one new saw
+  displayName: SAW
+  description: Saw Tower
   type: 3
   value: 1
   icon: {fileID: 21300000, guid: 5b905bae397d0634e91dd68ff21aecbd, type: 3}

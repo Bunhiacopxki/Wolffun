@@ -71,6 +71,8 @@ public class WinConditionTracker : MonoBehaviour
     {
         if (spawnFinished && activeFragments.Count == 0 && scheduledObjects > 0)
         {
+            spawnFinished = false;
+            scheduledObjects = 0;
             OnAllResolved?.Invoke();
         }
     }

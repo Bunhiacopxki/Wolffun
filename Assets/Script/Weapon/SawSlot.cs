@@ -24,5 +24,6 @@ public class SawSlot : MonoBehaviour
     {
         CurrentSaw = null;
         IsOccupied = false;
+        SetHighlight(true);
     }
 }

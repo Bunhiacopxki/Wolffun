@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Upgrade_2
   m_EditorClassIdentifier: 
   upgradeId: 2
-  displayName: Faster rotation speed
-  description: Faster rotation speed
+  displayName: SPEED
+  description: Saw Speed Increase
   type: 1
   value: 1
   icon: {fileID: 21300000, guid: 12a6544c066feb847ae1d627f3da02c3, type: 3}

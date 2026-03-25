@@ -42,4 +42,13 @@ public class XPManager : MonoBehaviour
 
         OnXPChanged?.Invoke(CurrentXP, RequiredXP);
     }
+
+    public void RestartXP()
+    {
+        _playerLevelSystem.RestartLevel();
+        OnLevelUp?.Invoke(_playerLevelSystem.CurrentLevel);
+        CurrentXP = 0;
+        RequiredXP = _progressionConfig.GetRequiredXp(_playerLevelSystem.CurrentLevel);
+        OnXPChanged?.Invoke(CurrentXP, RequiredXP);
+    }
 }

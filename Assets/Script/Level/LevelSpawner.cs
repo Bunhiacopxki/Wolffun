@@ -21,7 +21,12 @@ public class LevelSpawner : MonoBehaviour
 
     public void StartSpawning()
     {
-        if (_remainObject == 0) return;
+        if (_currentLevel == null) return;
+        if (_remainObject == 0)
+        {
+            _tracker?.MarkSpawnFinished();
+            return;
+        }
         if (_spawnCoroutine != null) StopCoroutine(_spawnCoroutine);
         _spawnCoroutine = StartCoroutine(SpawnRoutine());
     }
@@ -41,9 +46,10 @@ public class LevelSpawner : MonoBehaviour
             }
 
             _remainObject--;
-            yield return new WaitForSeconds(_currentLevel.spawnInterval);
+            if (i < _currentLevel.objectsToSpawn.Count - 1)
+                yield return new WaitForSeconds(_currentLevel.spawnInterval);
         }
-
+       
         _tracker?.MarkSpawnFinished();
     }
 }

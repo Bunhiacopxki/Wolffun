@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelController _levelController;
     [SerializeField] private UpgradeManager _upgradeManager;
     [SerializeField] private SawPlacementController _sawPlacementController;
+    [SerializeField] private SawManager _sawManager;
 
     [Header("Level Sequence")]
     [SerializeField] private List<LevelData> _allLevels = new();
     [SerializeField] private int _startLevelIndex = 0;
+    [SerializeField] private GameObject _winPanel;
 
     [Header("Debug")]
     [SerializeField] private bool _logStateChanges = true;
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         Time.timeScale = 1f;
+        _winPanel.SetActive(false);
     }
 
     private void Start()
@@ -99,7 +102,7 @@ public class GameManager : MonoBehaviour
         LevelData levelData = CurrentLevelData;
         if (levelData == null)
         {
-            Debug.LogError("GameManager: CurrentLevelData is null.");
+            Debug.LogError("CurrentLevelData is null.");
             return;
         }
 
@@ -201,23 +204,27 @@ public class GameManager : MonoBehaviour
         {
             if (_logStateChanges)
                 Debug.Log("[GameManager] All levels completed.");
-
+            ShowWinPanel();
             ResumeGame();
             return;
         }
-        ResetAllSaws();
+        _sawManager.ResetAllSaws();
         CurrentLevelIndex = nextIndex;
         BeginCurrentLevel();
     }
 
-    private void ResetAllSaws()
+    public void RestartGame()
     {
-        SawWeapon[] saws = FindObjectsOfType<SawWeapon>();
-        foreach (var saw in saws)
-        {
-            if (saw != null)
-                saw.ResetToBaseStats();
-        }
+        CurrentLevelIndex = _startLevelIndex;
+        _sawManager.ResetAllSaws();
+        _xpManager.RestartXP();
+        _winPanel.SetActive(false);
+        BeginCurrentLevel();
+    }
+
+    private void ShowWinPanel()
+    {
+        _winPanel.SetActive(true);
     }
 
     public void RestartCurrentLevel()
@@ -232,13 +239,13 @@ public class GameManager : MonoBehaviour
     {
         if (_allLevels == null || _allLevels.Count == 0)
         {
-            Debug.LogError("GameManager: No levels available.");
+            Debug.LogError("No levels available.");
             return;
         }
 
         if (levelIndex < 0 || levelIndex >= _allLevels.Count)
         {
-            Debug.LogWarning($"GameManager: Invalid levelIndex {levelIndex}");
+            Debug.LogWarning($"Invalid levelIndex {levelIndex}");
             return;
         }
 
