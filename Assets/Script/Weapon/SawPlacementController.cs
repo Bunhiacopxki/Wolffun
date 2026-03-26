@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SawPlacementController : MonoBehaviour
 {
-    [SerializeField] private SawManager _sawManager;
     [SerializeField] private Camera _mainCamera;
 
     public event Action OnPlacementFinished;
@@ -14,7 +13,7 @@ public class SawPlacementController : MonoBehaviour
 
     public void BeginChooseEmptySlotMode()
     {
-        _availableSlots = _sawManager.GetEmptySlots();
+        _availableSlots = GameManager.Instance.SawManager.GetEmptySlots();
 
         if (_availableSlots.Count == 0)
         {
@@ -34,7 +33,7 @@ public class SawPlacementController : MonoBehaviour
     private void Update()
     {
         if (!_isChoosingSlot) return;
-
+        GameManager.Instance.SawManager.HandleAnim(true);
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 world = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -46,7 +45,7 @@ public class SawPlacementController : MonoBehaviour
             if (slot == null) return;
             if (!_availableSlots.Contains(slot)) return;
 
-            bool success = _sawManager.TrySpawnSawAtSlot(slot);
+            bool success = GameManager.Instance.SawManager.TrySpawnSawAtSlot(slot);
             if (success)
             {
                 EndChooseMode(slot);
@@ -58,6 +57,7 @@ public class SawPlacementController : MonoBehaviour
     {
         _isChoosingSlot = false;
         slot.SetHighlight(false);
+        GameManager.Instance.SawManager.HandleAnim(false);
         _availableSlots.Clear();
         OnPlacementFinished?.Invoke();
     }

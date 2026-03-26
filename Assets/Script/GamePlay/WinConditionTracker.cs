@@ -17,17 +17,31 @@ public class WinConditionTracker : MonoBehaviour
 
     private void Start()
     {
+        ResetTracker();
+    }
+
+    public void ResetTracker()
+    {
+        ClearSubscriptions();
+        activeFragments.Clear();
         scheduledObjects = 0;
         spawnFinished = false;
     }
 
-    private void OnDisable()
+    private void ClearSubscriptions()
     {
         foreach (var fragment in activeFragments)
         {
+            if (fragment == null) continue;
             fragment.OnFragmentResolved -= HandleFragmentResolved;
             fragment.OnFragmentSplitCreated -= HandleFragmentSplitCreated;
         }
+    }
+
+
+    private void OnDisable()
+    {
+        ClearSubscriptions();
     }
 
     public void RegisterScheduledObject()

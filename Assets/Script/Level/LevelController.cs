@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private LevelSpawner _levelSpawner;
     [SerializeField] private WinConditionTracker _winConditionTracker;
     [SerializeField] private LevelLayoutSpawner _levelLayoutSpawner;
-    [SerializeField] private SawManager _sawManager;
+    [SerializeField] private LevelProgressUI _levelProgressUI;
 
     public event Action OnLevelWon;
     private LevelData _levelData;
@@ -18,15 +18,23 @@ public class LevelController : MonoBehaviour
     public void BeginLevel(LevelData levelData)
     {
         _levelData = levelData;
+        if (_winConditionTracker != null) _winConditionTracker.ResetTracker();
         BuildLevelLayout(_levelData);
         _levelSpawner.Setup(_levelData, _winConditionTracker);
+        if (_levelProgressUI != null)
+        {
+            int levelNumber = GameManager.Instance != null ? GameManager.Instance.CurrentLevelIndex + 1 : 1;
+            int totalObjects = _levelData != null ? _levelData.objectsToSpawn.Count : 0;
+
+            _levelProgressUI.SetLevelText(levelNumber);
+            _levelProgressUI.SetupSpawnProgress(totalObjects);
+        }
         _levelSpawner.StartSpawning();
     }
 
     private void BuildLevelLayout(LevelData levelData)
     {
-        if (_sawManager != null)
-            _sawManager.ResetAllSaws();
+        GameManager.Instance.SawManager.ResetAllSaws();
 
         if (_levelLayoutSpawner != null)
             _levelLayoutSpawner.ClearLayout();
@@ -39,8 +47,7 @@ public class LevelController : MonoBehaviour
             _levelLayoutSpawner.SpawnObstacles(levelData.obstacles);
         }
 
-        if (_sawManager != null)
-            _sawManager.SetSlots(spawnedSlots);
+        GameManager.Instance.SawManager.SetSlots(spawnedSlots);
     }
 
 
@@ -48,12 +55,36 @@ public class LevelController : MonoBehaviour
     {
         if (_winConditionTracker != null)
             _winConditionTracker.OnAllResolved += HandleLevelWon;
+
+        if (_levelSpawner != null)
+        {
+            _levelSpawner.OnSpawnProgressChanged += HandleSpawnProgressChanged;
+            _levelSpawner.OnSpawnCompleted += HandleSpawnCompleted;
+        }
     }
 
     private void OnDisable()
     {
         if (_winConditionTracker != null)
             _winConditionTracker.OnAllResolved -= HandleLevelWon;
+
+        if (_levelSpawner != null)
+        {
+            _levelSpawner.OnSpawnProgressChanged -= HandleSpawnProgressChanged;
+            _levelSpawner.OnSpawnCompleted -= HandleSpawnCompleted;
+        }
+    }
+
+    private void HandleSpawnProgressChanged(int spawnedCount, int totalCount)
+    {
+        if (_levelProgressUI != null)
+            _levelProgressUI.UpdateSpawnProgress(spawnedCount);
+    }
+
+    private void HandleSpawnCompleted()
+    {
+        if (_levelProgressUI != null)
+            _levelProgressUI.FillSpawnProgress();
     }
 
     private void HandleLevelWon()

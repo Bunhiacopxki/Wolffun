@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21eec080a8a4caf42ac43b2756180009, type: 3}
-  m_Name: Level_1
+  m_Name: Level_5
   m_EditorClassIdentifier: 
-  levelId: 1
+  levelId: 2
   spawnInterval: 5
   objectsToSpawn:
   - objectId: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
     destructible: 1
     xpPerPixel: 1
   - objectId: 2
-    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
     destructible: 1
     xpPerPixel: 1
   - objectId: 4
-    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
     destructible: 1
     xpPerPixel: 1
   - objectId: 6
-    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
@@ -65,7 +65,7 @@ MonoBehaviour:
     destructible: 1
     xpPerPixel: 1
   - objectId: 8
-    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
@@ -79,13 +79,16 @@ MonoBehaviour:
     destructible: 1
     xpPerPixel: 1
   - objectId: 10
-    shape: {fileID: 11400000, guid: 5b19735ac03e03f4482f2adf8584ca04, type: 2}
+    shape: {fileID: 11400000, guid: f7c4ff8340d07b5498158bddab563870, type: 2}
     materialData: {fileID: 11400000, guid: 197af825d874d714d80439d5f3798242, type: 2}
     spawnPosition: {x: 0, y: 5}
     scale: 1
     destructible: 1
     xpPerPixel: 1
   obstacles:
-  - position: {x: -0.5, y: -1}
+  - position: {x: 1, y: 0}
+  - position: {x: -1, y: 0}
   weaponSlots:
+  - position: {x: 0.5, y: -1}
   - position: {x: 0, y: 0}
+  - position: {x: -0.5, y: -1}

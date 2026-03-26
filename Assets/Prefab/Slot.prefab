@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5429446311770154071}
   - component: {fileID: 496316776177418280}
   - component: {fileID: 8458409297037140823}
+  - component: {fileID: -2423761016074482863}
   m_Layer: 0
   m_Name: Slot
   m_TagString: Untagged
@@ -109,8 +110,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 82a00fe62684c01439a51e9d5a6df8b3, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: f19dfe8a771763d428b947126fe21e40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,5 +134,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3679843008d5c6a47b3fd6b39e2946d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _highlightRenderer: {fileID: 496316776177418280}
+  _normalRenderer: {fileID: 496316776177418280}
   _slotCollider: {fileID: 5429446311770154071}
+  _upgradeSaw: {fileID: -2423761016074482863}
+--- !u!95 &-2423761016074482863
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017915138867006041}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a8ed34c42c18c546b19d160fa8fb923, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

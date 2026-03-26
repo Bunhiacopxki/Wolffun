@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     public int CurrentLevelIndex { get; private set; }
     public XPManager XpManager => _xpManager;
+    public SawManager SawManager => _sawManager;
     public LevelData CurrentLevelData
     {
         get

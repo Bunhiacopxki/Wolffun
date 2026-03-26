@@ -8,9 +8,6 @@ public class XPUI : MonoBehaviour
     [Header("XP UI")]
     [SerializeField] private Slider _xpSlider;
 
-    [Header("Level UI")]
-    [SerializeField] private TMP_Text _levelText;
-
     [Header("Animation")]
     [SerializeField] private float _xpLerpSpeed = 8f;
     [SerializeField] private bool _animateXPBar = true;
@@ -22,13 +19,6 @@ public class XPUI : MonoBehaviour
 
     private Coroutine _xpBarRoutine;
     private Coroutine _levelAnimRoutine;
-    private Vector3 _levelOriginalScale;
-
-    private void Awake()
-    {
-        if (_levelText != null)
-            _levelOriginalScale = _levelText.transform.localScale;
-    }
 
     private void OnEnable()
     {
@@ -49,7 +39,6 @@ public class XPUI : MonoBehaviour
 
     private void RefreshAllInstant()
     {
-        UpdateLevelText(GameManager.Instance.XpManager.CurrentLevel);
         UpdateXPUIInstant(GameManager.Instance.XpManager.CurrentXP, GameManager.Instance.XpManager.RequiredXP);
     }
 
@@ -75,21 +64,8 @@ public class XPUI : MonoBehaviour
 
     private void HandleLevelUp(int newLevel)
     {
-        UpdateLevelText(newLevel);
-
-        //if (_levelUpEffect != null)
-        //    _levelUpEffect.SetActive(true);
-
         if (_levelAnimRoutine != null)
             StopCoroutine(_levelAnimRoutine);
-
-        _levelAnimRoutine = StartCoroutine(PlayLevelPunch());
-    }
-
-    private void UpdateLevelText(int level)
-    {
-        if (_levelText != null)
-            _levelText.text = level.ToString();
     }
 
     private void UpdateXPUIInstant(int currentXP, int requiredXP)
@@ -107,36 +83,5 @@ public class XPUI : MonoBehaviour
         }
 
         _xpSlider.value = targetValue;
-    }
-
-    private IEnumerator PlayLevelPunch()
-    {
-        if (_levelText == null) yield break;
-
-        Transform target = _levelText.transform;
-        Vector3 startScale = _levelOriginalScale;
-        Vector3 punchScale = _levelOriginalScale * _levelPunchScale;
-
-        float half = _levelPunchDuration * 0.5f;
-        float t = 0f;
-
-        while (t < half)
-        {
-            t += Time.deltaTime;
-            float lerp = t / half;
-            target.localScale = Vector3.Lerp(startScale, punchScale, lerp);
-            yield return null;
-        }
-
-        t = 0f;
-        while (t < half)
-        {
-            t += Time.deltaTime;
-            float lerp = t / half;
-            target.localScale = Vector3.Lerp(punchScale, startScale, lerp);
-            yield return null;
-        }
-
-        target.localScale = startScale;
     }
 }

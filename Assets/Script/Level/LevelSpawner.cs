@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,14 +10,25 @@ public class LevelSpawner : MonoBehaviour
     private WinConditionTracker _tracker;
     private Coroutine _spawnCoroutine;
     private int _remainObject;
+    private int _spawnedObjectCount;
+    private int _totalObjectCount;
 
     public int RemainObject => _remainObject;
+    public int SpawnedObjectCount => _spawnedObjectCount;
+    public int TotalObjectCount => _totalObjectCount;
+
+    public event Action<int, int> OnSpawnProgressChanged;
+    public event Action OnSpawnCompleted;
 
     public void Setup(LevelData levelData, WinConditionTracker winConditionTracker)
     {
         _currentLevel = levelData;
         _tracker = winConditionTracker;
-        _remainObject = _currentLevel != null ? _currentLevel.objectsToSpawn.Count : 0;
+        _totalObjectCount = _currentLevel != null ? _currentLevel.objectsToSpawn.Count : 0;
+        _remainObject = _totalObjectCount;
+        _spawnedObjectCount = 0;
+
+        OnSpawnProgressChanged?.Invoke(_spawnedObjectCount, _totalObjectCount);
     }
 
     public void StartSpawning()
@@ -24,6 +36,7 @@ public class LevelSpawner : MonoBehaviour
         if (_currentLevel == null) return;
         if (_remainObject == 0)
         {
+            OnSpawnCompleted?.Invoke();
             _tracker?.MarkSpawnFinished();
             return;
         }
@@ -44,12 +57,15 @@ public class LevelSpawner : MonoBehaviour
             {
                 _tracker?.RegisterActiveFragment(root);
             }
-
+            _spawnedObjectCount++;
             _remainObject--;
+            OnSpawnProgressChanged?.Invoke(_spawnedObjectCount, _totalObjectCount);
             if (i < _currentLevel.objectsToSpawn.Count - 1)
                 yield return new WaitForSeconds(_currentLevel.spawnInterval);
         }
-       
+
+        OnSpawnCompleted?.Invoke();
         _tracker?.MarkSpawnFinished();
+        _spawnCoroutine = null;
     }
 }

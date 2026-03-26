@@ -1,5 +1,3 @@
-using System;
-
 public class PlayerLevelSystem
 {
     public int CurrentLevel { get; private set; } = 1;

@@ -56,6 +56,14 @@ public class SawManager : MonoBehaviour
         return true;
     }
 
+    public void HandleAnim(bool state)
+    {
+        foreach (var slot in _allSlots)
+        {
+            if (slot != null && !slot.IsOccupied) slot.ToggleAnim(state);
+        }
+    }
+
     public List<SawSlot> GetEmptySlots()
     {
         List<SawSlot> result = new();
