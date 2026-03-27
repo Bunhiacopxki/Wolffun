@@ -20,6 +20,7 @@ public class PixelObjectSpawnEntry
     public MaterialData materialData;
     public Vector2 spawnPosition;
     public float scale = 1f;
+    public float rotationZ = 0f;
     public bool destructible = true;
     public int xpPerPixel = 1;
 }
@@ -28,6 +29,8 @@ public class PixelObjectSpawnEntry
 public class ObstacleData
 {
     public Vector2 position;
+    public Vector2 size = Vector2.one;
+    public Sprite sprite;
 }
 
 [System.Serializable]

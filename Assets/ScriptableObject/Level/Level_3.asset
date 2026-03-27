@@ -87,6 +87,8 @@ MonoBehaviour:
     xpPerPixel: 1
   obstacles:
   - position: {x: 0, y: 0}
+    size: {x: 1, y: 1}
+    sprite: {fileID: 21300000, guid: f19dfe8a771763d428b947126fe21e40, type: 3}
   weaponSlots:
   - position: {x: -1, y: 0}
   - position: {x: 1, y: 0}

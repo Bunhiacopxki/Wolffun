@@ -11,7 +11,6 @@ public class XPManager : MonoBehaviour
 
     public int CurrentXP { get; private set; }
     public int RequiredXP { get; private set; }
-    public int CurrentLevel => _playerLevelSystem.CurrentLevel;
 
     public void Initialize()
     {
@@ -19,7 +18,6 @@ public class XPManager : MonoBehaviour
 
         CurrentXP = 0;
         RequiredXP = _progressionConfig.GetRequiredXp(_playerLevelSystem.CurrentLevel);
-
         OnXPChanged?.Invoke(CurrentXP, RequiredXP);
     }
 
@@ -39,7 +37,6 @@ public class XPManager : MonoBehaviour
 
             RequiredXP = _progressionConfig.GetRequiredXp(_playerLevelSystem.CurrentLevel);
         }
-
         OnXPChanged?.Invoke(CurrentXP, RequiredXP);
     }
 

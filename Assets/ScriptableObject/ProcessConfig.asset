@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ProcessConfig
   m_EditorClassIdentifier: 
   baseXpRequired: 100
-  xpIncreasePerLevel: 50
+  xpIncreasePerLevel: 100
