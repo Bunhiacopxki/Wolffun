@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="Screenshot (663)" src="https://github.com/user-attachments/assets/7427bf5a-13a9-48e0-8c9d-fcf451bddc2b" /># Wolffun
+# Wolffun
 
 Dự án game pixel destruction 2D được phát triển bằng Unity. Người chơi sử dụng vũ khí để phá hủy các vật thể pixel, thu thập XP và nâng cấp để tiến qua các level.
 
