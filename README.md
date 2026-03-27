@@ -1,4 +1,4 @@
-# Wolffun
+<img width="1920" height="1080" alt="Screenshot (663)" src="https://github.com/user-attachments/assets/7427bf5a-13a9-48e0-8c9d-fcf451bddc2b" /># Wolffun
 
 Dự án game pixel destruction 2D được phát triển bằng Unity. Người chơi sử dụng vũ khí để phá hủy các vật thể pixel, thu thập XP và nâng cấp để tiến qua các level.
 
@@ -70,13 +70,13 @@ Level Editor Tool là một custom editor window trong Unity cho phép tạo và
 ### Cách mở Level Editor
 1. Trong Unity Editor, vào menu **Tools > Pixel Destruction > Level Editor**
 2. Hoặc tìm trong Project window file `LevelData` và double-click để mở
-
+<img width="401" height="687" alt="Screenshot 2026-03-27 113405" src="https://github.com/user-attachments/assets/5a3c5965-a73c-46d4-b05a-b23ea5cd8d83" />
 ### Giao diện chính
 - **Level Data**: Chọn LevelData asset để chỉnh sửa
 - **Level Info**: Hiển thị thông tin tổng quan level (số objects, obstacles, weapon slots)
 - **Placement Mode**: Chọn loại element để đặt (SpawnObject, Obstacle, WeaponSlot)
 - **Selection**: Chỉnh sửa element đã chọn
-
+<img width="406" height="690" alt="Screenshot 2026-03-27 114257" src="https://github.com/user-attachments/assets/53baac7d-1f7a-4de2-a02b-061754e742be" />
 ### Cách sử dụng trong Scene View
 1. Chọn **Placement Mode** (ví dụ: SpawnObject)
 2. Điền thông tin template (shape, material, scale, etc.)
@@ -85,11 +85,7 @@ Level Editor Tool là một custom editor window trong Unity cho phép tạo và
    - **Ctrl + Left Click**: Chọn element gần nhất để chỉnh sửa
 4. Sử dụng handle để di chuyển element đã chọn
 5. Nhấn **Delete Selected** để xóa element
-
-### Tính năng Grid Snap
-- Bật/tắt **Use Grid Snap** để căn chỉnh theo grid
-- Điều chỉnh **Grid Size** để thay đổi độ lớn grid
-
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/17637fe2-9de4-4604-86ec-84ed5351ce79" />
 ### Lưu thay đổi
 - Nhấn **Save Asset** để lưu LevelData
 - Nhấn **Clear All** để xóa tất cả elements (có xác nhận)
