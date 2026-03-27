@@ -85,7 +85,7 @@ public class LaserGunController : MonoBehaviour
             origin,
             endPoint,
             beamRadius,
-            dps * Time.deltaTime,
+            dps,
             sampleSpacing
         );
     }
